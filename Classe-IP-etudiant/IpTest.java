@@ -2,7 +2,7 @@ import IpPackage.*;
 import java.util.Scanner;
 class IpTest {
 	public static void main(String args[]) {
-		// on utilise un scanner pour demander à l'utilisateur d'entrer les adresses IP
+		// On utilise un scanner pour demander à l'utilisateur d'entrer les deux adresses IP
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Entrez le premier octet de la première adresse IP: ");
 		int o1 = sc.nextInt();

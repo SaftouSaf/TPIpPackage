@@ -17,7 +17,7 @@ public class IpPackage {
         this.octet4 = var4;
     }
 
-    // Cette méthode crée et retourne un objet IpPackage. Elle contient quatre arguments int, un pour chaque octet de l'adresse IP
+    // Cette méthode static crée et retourne un objet IpPackage. Elle contient quatre arguments int, un pour chaque octet de l'adresse IP
     public static IpPackage getInstance(int var0, int var1, int var2, int var3) {
         // Ce bloc try-catch vérifie si les octets sont dans l'intervalle valide (0-255)
         try {
