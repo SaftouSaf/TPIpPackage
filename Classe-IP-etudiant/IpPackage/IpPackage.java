@@ -21,7 +21,7 @@ public class IpPackage {
     public static IpPackage getInstance(int var0, int var1, int var2, int var3) {
         // Ce bloc try-catch vérifie si les octets sont dans l'intervalle valide (0-255)
         try {
-            if (var0 > 0 && var0 < 255 && var1 > 0 && var1 < 255 && var2 > 0 && var2 < 255 && var3 > 0 && var3 < 255) {
+            if (var0 >= 0 && var0 <= 255 && var1 >= 0 && var1 <= 255 && var2 >= 0 && var2 <= 255 && var3 >= 0 && var3 <= 255) {
                 System.out.println("o1 = " + var0);
                 System.out.println("o2 = " + var1);
                 System.out.println("o3 = " + var2);
@@ -79,6 +79,14 @@ public class IpPackage {
         if (this.octet1 >= 192 && this.octet1 <= 223) {
            var1 = 'C';
         }
+
+        if (this.octet1 >= 224 && this.octet1 <= 239) {
+            var1 = 'D';
+        }
+
+        if (this.octet1 >= 240 && this.octet1 <= 255) {
+            var1 = 'E';
+        }
   
         // On retourne alors la classe de l'adresse IP
         return var1;
@@ -86,19 +94,32 @@ public class IpPackage {
 
     // Cette méthode calcule et retourne l'adresse réseau de l'objet IpPackage courant
     public IpPackage adresseReseau() {
-        int var1 = this.octet1;
+        int var1 = 0;
         int var2 = 0;
         int var3 = 0;
         int var4 = 0;
 
         // Les boucles if vérifie la classe de l'adresse IP et assigne les valeurs appropriées aux variables
+        if (this.getClasse() == 'A') {
+            var1 = this.octet1;
+        }
+        
         if (this.getClasse() == 'B') {
-           var2 = this.octet2;
+            var1 = this.octet1;
+            var2 = this.octet2;
         }
   
         if (this.getClasse() == 'C') {
-           var2 = this.octet2;
-           var3 = this.octet3;
+            var1 = this.octet1;
+            var2 = this.octet2;
+            var3 = this.octet3;
+        }
+
+        if (this.getClasse() == 'D') {
+            var1 = this.octet1;
+            var2 = this.octet2;
+            var3 = this.octet3;
+            var4 = this.octet4;
         }
         
         // On retourne un nouvel objet IpPackage avec les octets de l'adresse réseau
@@ -108,7 +129,7 @@ public class IpPackage {
     // Cette méthode compare l'adresse réseau de l'objet courant avec celle d'un autre objet IpPackage passé en argument
     public Boolean estMemeReseau(IpPackage var1) {
         // Si tous les octets correspondent, la méthode retourne true, sinon elle retourne false
-        return this.adresseReseau().octet1 == var1.adresseReseau().octet1 && this.adresseReseau().octet2 == var1.adresseReseau().octet2 && this.adresseReseau().octet3 == var1.adresseReseau().octet3;
+        return this.adresseReseau().octet1 == var1.adresseReseau().octet1 && this.adresseReseau().octet2 == var1.adresseReseau().octet2 && this.adresseReseau().octet3 == var1.adresseReseau().octet3 && this.adresseReseau().octet4 == var1.adresseReseau().octet4;
     }
 }
 
