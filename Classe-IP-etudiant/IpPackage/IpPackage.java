@@ -94,29 +94,22 @@ public class IpPackage {
 
     // Cette méthode calcule et retourne l'adresse réseau de l'objet IpPackage courant
     public IpPackage adresseReseau() {
-        int var1 = 0;
+        int var1 = this.octet1;
         int var2 = 0;
         int var3 = 0;
         int var4 = 0;
 
-        // Les boucles if vérifie la classe de l'adresse IP et assigne les valeurs appropriées aux variables
-        if (this.getClasse() == 'A') {
-            var1 = this.octet1;
-        }
-        
+        // Les boucles if vérifie la classe de l'adresse IP et assigne les valeurs appropriées aux variables        
         if (this.getClasse() == 'B') {
-            var1 = this.octet1;
             var2 = this.octet2;
         }
   
         if (this.getClasse() == 'C') {
-            var1 = this.octet1;
             var2 = this.octet2;
             var3 = this.octet3;
         }
 
         if (this.getClasse() == 'D') {
-            var1 = this.octet1;
             var2 = this.octet2;
             var3 = this.octet3;
             var4 = this.octet4;
